@@ -1,47 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Nouveau signalement</title>
-  <link rel="stylesheet" href="style.css">  </head>
-<body>
-  <div class="container">
-    <h1>Nouveau signalement</h1>
-    <form id="new-report-form" method="post" action="/signalements">
-      <div class="form-group">
-        <label for="titre">Titre:</label>
-        <input type="text" id="titre" name="titre" placeholder="Titre" required>
-      </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" placeholder="Description"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="photo">URL de la photo:</label>
-        <input type="url" id="photo" name="photo" placeholder="URL de la photo">
-      </div>
-      <div class="form-group">
-        <label for="categorie">Catégorie:</label>
-        <input type="text" id="categorie" name="categorie" placeholder="Catégorie">
-      </div>
-      <div class="form-group">
-        <label for="longitude">Longitude:</label>
-        <input type="number" id="longitude" name="longitude" placeholder="Longitude" required step="0.00001">
-      </div>
-      <div class="form-group">
-        <label for="latitude">Latitude:</label>
-        <input type="number" id="latitude" name="latitude" placeholder="Latitude" required step="0.00001">
-      </div>
-      <div class="form-group">
-        <label for="statut">Statut:</label>
-        <select id="statut" name="statut">
-          <option value="en attente">En attente</option>
-          <option value="en cours">En cours</option>
-          <option value="résolu">Résolu</option>
-        </select>
-      </div>
-      <button type="submit">Enregistrer</button>
-    </form>
-  </div>
-  <script src="script.js"></script> 
-</body>
-</html>
+extends ../layout
+
+block content
+  h1 Nouveau signalement
+  form#new-report-form(method="post", action="/signalements")
+    .form-group
+      label(for="titre") Titre:
+      input#titre(type="text", name="titre", placeholder="Titre" required)
+    .form-group
+      label(for="description") Description:
+      textarea#description(name="description", placeholder="Description")
+    .form-group
+      label(for="photo") URL de la photo:
+      input#photo(type="url", name="photo", placeholder="URL de la photo")
+    .form-group
+      label(for="categorie") Catégorie:
+      input#categorie(type="text", name="categorie", placeholder="Catégorie")
+    .form-group
+      label(for="statut") Statut:
+      select#statut(name="statut")
+        option(value="en attente") En attente
+        option(value="en cours") En cours
+        option(value="résolu") Résolu
+    .form-group
+      label Position sur la carte:
+      #map(style="height: 400px; margin: 20px 0;")
+    input#longitude(type="hidden", name="longitude", required)
+    input#latitude(type="hidden", name="latitude", required)
+    button(type="submit") Enregistrer
+
+  script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
+  link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css")
+  script(src="/js/form-map.js")
