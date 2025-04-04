@@ -3,10 +3,10 @@ extends ../layout
 block content
   h1 Nouveau signalement
 
-  form(method="post", action="/signalements")
+  form(method="post", action="/signalements", enctype="multipart/form-data")
     input(type="text", name="titre", placeholder="Titre", required)
     textarea(name="description", placeholder="Description")
-    input(type="url", name="photo", placeholder="URL de la photo")
+    input(type="file", name="photo", accept="image/*", required)
     input(type="text", name="categorie", placeholder="Catégorie")
     input(type="text", name="longitude", placeholder="Longitude", required)
     input(type="text", name="latitude", placeholder="Latitude", required)
