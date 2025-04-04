@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 Signalements
+  a(href="/signalements/new") Ajouter un signalement
+
+  #map(style="height: 400px; margin: 20px 0;")
+  
+  ul
+    each s in signalements
+      li
+        strong #{s.titre} 
+        |  - #{s.description} 
+        |  (#{s.categorie}) 
+        form(method="post", action=`/signalements/${s._id}/delete`)
+          button Supprimer
+
+  script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
+  link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css")
+  script.
+    const signalements = !{JSON.stringify(signalements)};
+  script(src="/js/map.js")
