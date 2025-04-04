@@ -14,4 +14,32 @@ block content
       option(value="en attente") En attente
       option(value="en cours") En cours
       option(value="résolu") Résolu
+  form#new-report-form(method="post", action="/signalements")
+    .form-group
+      label(for="titre") Titre:
+      input#titre(type="text", name="titre", placeholder="Titre" required)
+    .form-group
+      label(for="description") Description:
+      textarea#description(name="description", placeholder="Description")
+    .form-group
+      label(for="photo") URL de la photo:
+      input#photo(type="file", name="photo", accept="image/*", required)
+      .form-group
+      label(for="categorie") Catégorie:
+      input#categorie(type="text", name="categorie", placeholder="Catégorie")
+    .form-group
+      label(for="statut") Statut:
+      select#statut(name="statut")
+        option(value="en attente") En attente
+        option(value="en cours") En cours
+        option(value="résolu") Résolu
+    .form-group
+      label Position sur la carte:
+      #map(style="height: 400px; margin: 20px 0;")
+    input#longitude(type="hidden", name="longitude", required)
+    input#latitude(type="hidden", name="latitude", required)
     button(type="submit") Enregistrer
+
+  script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
+  link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css")
+  script(src="/js/form-map.js")
