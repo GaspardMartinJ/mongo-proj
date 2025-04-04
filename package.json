@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node dist/bin/www.js",
     "dev": "nodemon src/bin/www.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "jest"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
