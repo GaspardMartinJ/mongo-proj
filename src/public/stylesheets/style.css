@@ -1,8 +1,246 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Variables de couleur */
+:root {
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --background-color: #f8f9fa;
 }
 
-a {
-  color: #00B7FF;
+/* layout.pug */
+body {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #343a40;
+  font-weight: 700;
+}
+
+.nav-bar {
+  background: #2c3e50;
+  padding: 1rem;
+  border-bottom: 3px solid #34495e;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #3498db;
+}
+
+.nav-icon {
+  font-size: 2.0rem;
+  animation: wave 2s infinite;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-height: calc(100vh - 300px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.footer {
+  background: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 1rem;
+  border-top: 3px solid #34495e;
+  position: relative;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+  
+  .nav-icon {
+    display: none;
+  }
+}
+
+/* index.pug */
+.button-container {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.button-add {
+  background-color: var(--primary-color); /* Utilisation de la variable pour cohérence */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.button-add:hover {
+  background-color: #0056b3;
+}
+
+/* Carte */
+#map {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Liste des signalements */
+.signalement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.signalement-item {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* Bouton supprimer */
+.button-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.button-delete:hover {
+  background-color: #a71d2a;
+}
+
+/* About */
+/* Section À propos */
+.about-section {
+  padding: 50px 20px;
+  background-color: var(--background-color);
+}
+
+/* Membres de l'équipe */
+.team-member {
+  margin: 20px 0;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Alignement à gauche */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.team-member i {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-align: center; /* Optionnel : centre l’icône si souhaité */
+  cursor: pointer;
+}
+
+.team-member h4 {
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.team-member p {
+  margin: 0;
+  cursor: pointer;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Liste des fonctionnalités */
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 10px 0; /* Espacement vertical */
+  display: flex;
+  align-items: flex-start; /* Aligne les éléments au début */
+}
+
+.list-group-item i {
+  margin-right: 10px;
+  color: var(--success-color);
+  flex-shrink: 0; /* Empêche l’icône de rétrécir */
+}
+
+.list-group-item span {
+  line-height: 1.6; /* Espacement des lignes pour lisibilité */
+}
+
+.list-group-item ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+.list-group-item ul li {
+  margin-bottom: 5px;
+}
+
+/* Conclusion */
+.conclusion {
+  background-color: #e9ecef;
+  padding: 30px;
+  border-radius: 10px;
 }

@@ -32,14 +32,14 @@ export async function createSignalement(req: Request, res: Response) {
       date_signalement: new Date()
     });
 
-    res.redirect('/signalements');
   } catch (err) {
     console.error(err);
     res.status(500).send('Erreur lors de la création du signalement');
   }
+    res.redirect('/signalements');
 }
 
 export async function deleteSignalement(req: Request, res: Response) {
-  await Signalement.findByIdAndDelete(req.params.id);
-  res.redirect('/signalements');
+    await Signalement.findByIdAndDelete(req.params.id);
+    res.redirect('/signalements');
 }

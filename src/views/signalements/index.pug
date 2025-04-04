@@ -2,21 +2,29 @@ extends ../layout
 
 block content
   h1 Signalements
-  a(href="/signalements/new") Ajouter un signalement
 
-  #map(style="height: 400px; margin: 20px 0;")
-  
-  ul
+  // Bouton "Ajouter un signalement"
+  .button-container
+    a.button-add(href="/signalements/new") ➕ Ajouter un signalement
+
+  // Carte avec plus de hauteur
+  #map(style="height: 600px; margin: 30px 0; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);")
+
+  // Liste des signalements
+  ul.signalement-list
     each s in signalements
-      li
-        strong #{s.titre} 
-        |  - #{s.description} 
-        |  (#{s.categorie}) 
+      li.signalement-item
+        strong #{s.titre}
+        |  – #{s.description}
+        |  (#{s.categorie})
         form(method="post", action=`/signalements/${s._id}/delete`)
-          button Supprimer
+          button.button-delete Supprimer
 
+  // Leaflet
   script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
   link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css")
+
+  // Données + script de la carte
   script.
     const signalements = !{JSON.stringify(signalements)};
   script(src="/js/map.js")

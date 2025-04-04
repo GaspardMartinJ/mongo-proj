@@ -1,0 +1,93 @@
+extends layout.pug
+
+block content
+  .container.about-section
+    h1.text-center(data-aos="fade-in") À propos de notre projet
+    p.text-center(data-aos="fade-in" data-aos-delay="100") Bienvenue sur la page de présentation de notre projet réalisé dans le cadre du Challenge 2025.
+
+    //- Section sur le projet
+    section.project-info.my-5(data-aos="fade-up")
+      h2.text-center Le Projet : Une Application Communautaire
+      p Notre projet consiste à développer une application communautaire permettant de partager des informations, des alertes ou de bonnes adresses. Cette application s’inscrit dans une démarche moderne et innovante, en respectant les objectifs techniques suivants :
+
+      //- Chaque élément de la liste sur sa propre ligne
+      p
+        i.fas.fa-check
+        |  Utilisation de 
+        strong Node.js 
+        |  et 
+        strong Express 
+        |  en architecture MVC (sans séparation backend/frontend).
+
+      p
+        i.fas.fa-check
+        |  Utilisation de 
+        strong MongoDB 
+        |  pour la persistance des données, avec :
+
+      //- Sous-éléments pour MongoDB, chaque point sur sa ligne
+      p(style="margin-left:20px")
+        | - Une collection exploitant les 
+        strong Time Series 
+        |  pour des données temporelles.
+      p(style="margin-left:20px")
+        | - Des données cartographiques stockées et affichées via 
+        strong OpenStreetMap 
+        |  (avec Leaflet) ou 
+        strong Mapbox.
+
+      p
+        i.fas.fa-check
+        |  Fonctionnalités CRUD (ajout, modification, suppression des données).
+
+      p
+        i.fas.fa-check
+        |  Intégration dans un pipeline 
+        strong CI/CD 
+        |  pour un développement fluide et automatisé.
+
+      p
+        i.fas.fa-check
+        |  Documentation complète du code.
+
+      p
+        i.fas.fa-check
+        |  Un design soigné et esthétique pour une expérience utilisateur optimale.
+
+
+    //- Section sur l'équipe
+    section.team-info.my-5
+      h2.text-center Notre Équipe
+      p 
+        | Nous sommes une équipe de 4 étudiants passionnés par le développement web et les technologies modernes. Voici les membres de notre équipe :
+      .row.justify-content-center
+      <a href="http://perdu.com/" target="_blank" style="text-decoration: none; color: inherit;">
+        .col-md-3.text-center.team-member
+          i.fas.fa-user.fa-2x
+          h4 Gaspard Martin
+          p Étudiant en informatique, fan de jardinage et de poignées de porte. Il est convaincu que chaque bug est une plante qui ne demande qu’à être arrosée… ou arrachée.
+
+        <a href="https://randomnutrition.fr" target="_blank" style="text-decoration: none; color: inherit;">
+        .col-md-3.text-center.team-member
+          i.fas.fa-user.fa-2x
+          h4 Killian Cengo
+          p Étudiant en informatique, développeur de couché et presseur de cuisses. Il code mieux allongé sur un banc de musculation, et personne ne comprend pourquoi.
+
+        <a href="http://perdu.com/" target="_blank" style="text-decoration: none; color: inherit;">
+        .col-md-3.text-center.team-member
+          i.fas.fa-user.fa-2x
+          h4 Léo Krys
+          p Étudiant en informatique, passionné par les technologies de déviation anti-missiles de toutes sortes et par les raccourcis clavier qui sauvent des vies (ou des projets).
+        
+        <a href="http://perdu.com/" target="_blank" style="text-decoration: none; color: inherit;">
+        .col-md-3.text-center.team-member
+          i.fas.fa-user.fa-2x
+          h4 Sibo Dong
+          p Étudiant en informatique, collectionneur de bugs insolubles et de memes de chats. Il est persuadé que chaque ligne de code mérite une tasse de thé.
+
+    //- Section pour la conclusion
+    section.conclusion.my-5(data-aos="fade-up")
+      h2.text-center Pourquoi ce projet ?
+      p.text-center Ce projet est obligatoire et noté. D'autres questions ?
+      .text-center.mt-3
+        a.btn.btn-primary(href="/") Découvrez notre application
