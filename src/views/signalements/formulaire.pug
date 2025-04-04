@@ -1,36 +1,32 @@
 extends ../layout
 
 block content
-  .form-container
-    h1 Nouveau signalement
-    form#new-report-form(method="post", action="/signalements")
-      .form-group
-        label(for="titre") Titre :
-        input#titre(type="text", name="titre", placeholder="Titre du signalement", required)
-      .form-group
-        label(for="description") Description :
-        textarea#description(name="description", placeholder="Décris le problème ici...")
-      .form-group
-        label(for="photo") URL de la photo :
-        input#photo(type="url", name="photo", placeholder="https://exemple.com/image.jpg")
-      .form-group
-        label(for="categorie") Catégorie :
-        input#categorie(type="text", name="categorie", placeholder="Ex: Voirie, Déchets...")
-      .form-group
-        label(for="statut") Statut :
-        select#statut(name="statut")
-          option(value="en attente") En attente
-          option(value="en cours") En cours
-          option(value="résolu") Résolu
-      .form-group
-        label Position sur la carte :
-        input#coords-display(type="text", readonly, placeholder="Clique sur la carte pour sélectionner un point")
-        input#longitude(type="hidden", name="longitude", required)
-        input#latitude(type="hidden", name="latitude", required)
-
-        #map(style="height: 400px; margin: 10px 0; border-radius: 10px; overflow: hidden;")
-
-      button.btn-submit(type="submit") 🚀 Enregistrer le signalement
+  h1 Nouveau signalement
+  form#new-report-form(method="post", action="/signalements")
+    .form-group
+      label(for="titre") Titre:
+      input#titre(type="text", name="titre", placeholder="Titre" required)
+    .form-group
+      label(for="description") Description:
+      textarea#description(name="description", placeholder="Description")
+    .form-group
+      label(for="photo") URL de la photo:
+      input#photo(type="url", name="photo", placeholder="URL de la photo")
+    .form-group
+      label(for="categorie") Catégorie:
+      input#categorie(type="text", name="categorie", placeholder="Catégorie")
+    .form-group
+      label(for="statut") Statut:
+      select#statut(name="statut")
+        option(value="en attente") En attente
+        option(value="en cours") En cours
+        option(value="résolu") Résolu
+    .form-group
+      label Position sur la carte:
+      #map(style="height: 400px; margin: 20px 0;")
+    input#longitude(type="hidden", name="longitude", required)
+    input#latitude(type="hidden", name="latitude", required)
+    button(type="submit") Enregistrer
 
   // Leaflet
   script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")

@@ -1,4 +1,5 @@
 import express from 'express';
+import upload from '../config/upload';
 import {
   listSignalements,
   showForm,
@@ -10,7 +11,7 @@ const router = express.Router();
 
 router.get('/', listSignalements);
 router.get('/new', showForm);
-router.post('/', createSignalement);
+router.post('/', upload.single('photo'), createSignalement);
 router.post('/:id/delete', deleteSignalement);
 
 export default router;

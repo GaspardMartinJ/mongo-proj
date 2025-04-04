@@ -34,5 +34,6 @@ jobs:
       # Run tests
       - name: Run tests
         env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: npm test
