@@ -6,41 +6,53 @@
 }
 
 /* index.pug */
-.map-container {
+.carte-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
+  max-width: 90%;
+  margin: 10px auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.map-container .carte {
+.carte-wrapper {
+  position: relative;
   width: 100%;
+}
+
+.carte-image {
+  width: 100%;
+  height: auto;
   display: block;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.map-container .point {
+.point-1, .point-2, .point-3, .point-4, .point-5 {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  animation: pulse 1.5s infinite ease-in-out;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  animation: pulse 2s infinite;
 }
 
-/* Positionnement des points (ajuste selon ta carte) */
-.map-container .point1 {
-  top: 30%;
-  left: 40%;
+.point-image {
+  width: 100%;
+  height: 100%;
 }
 
-.map-container .point2 {
-  top: 50%;
-  left: 60%;
-}
+/* Positions des points sur la carte */
+.point-1 { top: 25%; left: 48%; animation-delay: 0s; }
+.point-2 { top: 70%; left: 42%; animation-delay: 0.8s; }
+.point-3 { top: 40%; left: 65%; animation-delay: 1.6s; }
+.point-4 { top: 60%; left: 25%; animation-delay: 2.4s; }
+.point-5 { top: 30%; left: 20%; animation-delay: 3.2s; }
 
-.map-container .point3 {
-  top: 70%;
-  left: 25%;
+@keyframes pulse {
+  0% { transform: scale(0); opacity: 0; }
+  25% { transform: scale(1.2); opacity: 1; }
+  50% { transform: scale(1); opacity: 1; }
+  75% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes pulse {
@@ -66,7 +78,7 @@ h1, h2 {
 
 .nav-bar {
   background: #2c3e50;
-  padding: 1rem;
+  padding: 0.6rem;
   border-bottom: 3px solid #34495e;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: relative;
@@ -112,7 +124,7 @@ h1, h2 {
 
 .content {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 2rem;
   background: #fff;
   border: 1px solid #ddd;
@@ -287,4 +299,87 @@ h1, h2 {
   background-color: #e9ecef;
   padding: 30px;
   border-radius: 10px;
+}
+
+/* Nouveau signalement */
+.form-container {
+  max-width: 800px;
+  margin: 0rem auto;
+  background: var(--background-color);
+  border: 1px solid #ddd;
+  padding:1rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+input[type="text"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Ajoute cette propriété */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-color, #007bff);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+  outline: none;
+  background-color: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-submit {
+  display: block;
+  width: 60%;
+  padding: 0.9rem 1.2rem;
+  background-color: var(--primary-color, #007bff);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

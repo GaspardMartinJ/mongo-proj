@@ -7,7 +7,7 @@ const router = express.Router();
 router.use('/signalements', signalementsRouter); 
 router.use('/about', aboutRouter);
 router.get('/', (req: Request, res: Response) => {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Carte de signalements' });
 });
 
 export default router;
