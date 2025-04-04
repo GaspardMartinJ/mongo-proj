@@ -1,4 +1,11 @@
-/* ilayout.pug */
+/* Variables de couleur */
+:root {
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --background-color: #f8f9fa;
+}
+
+/* layout.pug */
 body {
   background-color: #f5f5f5;
   min-height: 100vh;
@@ -6,6 +13,11 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+}
+
+h1, h2 {
+  color: #343a40;
+  font-weight: 700;
 }
 
 .nav-bar {
@@ -102,7 +114,7 @@ body {
 }
 
 .button-add {
-  background-color: #007bff;
+  background-color: var(--primary-color); /* Utilisation de la variable pour cohérence */
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
@@ -133,7 +145,7 @@ body {
   background-color: #f9f9f9;
   padding: 1rem;
   margin-bottom: 1rem;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid var(--primary-color);
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
@@ -153,4 +165,82 @@ body {
 
 .button-delete:hover {
   background-color: #a71d2a;
+}
+
+/* About */
+/* Section À propos */
+.about-section {
+  padding: 50px 20px;
+  background-color: var(--background-color);
+}
+
+/* Membres de l'équipe */
+.team-member {
+  margin: 20px 0;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Alignement à gauche */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.team-member i {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-align: center; /* Optionnel : centre l’icône si souhaité */
+  cursor: pointer;
+}
+
+.team-member h4 {
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.team-member p {
+  margin: 0;
+  cursor: pointer;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Liste des fonctionnalités */
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 10px 0; /* Espacement vertical */
+  display: flex;
+  align-items: flex-start; /* Aligne les éléments au début */
+}
+
+.list-group-item i {
+  margin-right: 10px;
+  color: var(--success-color);
+  flex-shrink: 0; /* Empêche l’icône de rétrécir */
+}
+
+.list-group-item span {
+  line-height: 1.6; /* Espacement des lignes pour lisibilité */
+}
+
+.list-group-item ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+.list-group-item ul li {
+  margin-bottom: 5px;
+}
+
+/* Conclusion */
+.conclusion {
+  background-color: #e9ecef;
+  padding: 30px;
+  border-radius: 10px;
 }
