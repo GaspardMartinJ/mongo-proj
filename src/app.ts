@@ -1,4 +1,4 @@
-import createError from 'http-errors';
+import createError, { HttpError } from 'http-errors';
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -23,16 +23,16 @@ app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use((err: HttpError, req: Request, res: Response) => {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  res.status(err.status || 500);
-  res.render('error');
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 export default app;
