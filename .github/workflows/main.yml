@@ -33,4 +33,6 @@ jobs:
 
       # Run tests
       - name: Run tests
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: npm test
