@@ -2,6 +2,18 @@ extends ../layout
 
 block content
   h1 Nouveau signalement
+
+  form(method="post", action="/signalements", enctype="multipart/form-data")
+    input(type="text", name="titre", placeholder="Titre", required)
+    textarea(name="description", placeholder="Description")
+    input(type="file", name="photo", accept="image/*", required)
+    input(type="text", name="categorie", placeholder="Catégorie")
+    input(type="text", name="longitude", placeholder="Longitude", required)
+    input(type="text", name="latitude", placeholder="Latitude", required)
+    select(name="statut")
+      option(value="en attente") En attente
+      option(value="en cours") En cours
+      option(value="résolu") Résolu
   form#new-report-form(method="post", action="/signalements")
     .form-group
       label(for="titre") Titre:
@@ -11,8 +23,8 @@ block content
       textarea#description(name="description", placeholder="Description")
     .form-group
       label(for="photo") URL de la photo:
-      input#photo(type="url", name="photo", placeholder="URL de la photo")
-    .form-group
+      input#photo(type="file", name="photo", accept="image/*", required)
+      .form-group
       label(for="categorie") Catégorie:
       input#categorie(type="text", name="categorie", placeholder="Catégorie")
     .form-group
