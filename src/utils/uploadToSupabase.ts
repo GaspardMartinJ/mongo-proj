@@ -1,7 +1,7 @@
-const { supabase } = require('./supabaseClient.js');
-const { v4: uuidv4 } = require('uuid');
+import { supabase }from './supabaseClient';
+import { v4 as uuidv4 } from 'uuid';
 
-async function uploadToSupabase(file) {
+async function uploadToSupabase(file: Express.Multer.File): Promise<string> {
   console.log("Début de l'upload...");
 
   if (!file) {
@@ -41,4 +41,4 @@ async function uploadToSupabase(file) {
   return publicUrlData.publicUrl;
 }
 
-module.exports = { uploadToSupabase };
+export default uploadToSupabase;

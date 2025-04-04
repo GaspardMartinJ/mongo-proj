@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
+
 import Signalement from '../models/signalement';
-const { uploadToSupabase } = require('../utils/uploadToSupabase.js');
+import uploadToSupabase from '../utils/uploadToSupabase';
 
 export async function listSignalements(req: Request, res: Response) {
   const signalements = await Signalement.find({});
@@ -13,7 +14,7 @@ export async function showForm(req: Request, res: Response) {
 
 export async function createSignalement(req: Request, res: Response) {
   const { titre, description, categorie, longitude, latitude, statut } = req.body;
-  const file = req.file;
+  const file = req.file!;
   console.log('Fichier reçu :', req.file);
 
   try {
