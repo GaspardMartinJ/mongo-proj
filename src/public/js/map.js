@@ -7,8 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     signalements.forEach((s) => {
         const [lng, lat] = s.localisation.coordonnees;
+
+        // Create popup content with image
+        let popupContent = `<strong>${s.titre}</strong><br>${s.description}`;
+
+        // Add image if available
+        if (s.imageUrl) {
+            popupContent += `<br><img src="${s.imageUrl}" alt="Image" style="max-width:200px; margin-top:8px; border-radius:4px;">`;
+        }
+
         L.marker([lat, lng])
-            .addTo(map)
-            .bindPopup(`<strong>${s.titre}</strong><br>${s.description}`);
+          .addTo(map)
+          .bindPopup(popupContent);
     });
 });
