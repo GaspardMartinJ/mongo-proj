@@ -22,8 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update hidden form fields
         document.getElementById("latitude").value = lat;
         document.getElementById("longitude").value = lng;
-
-        // Met à jour le champ visible
-        document.getElementById('coords-display').value = `${lat}, ${lng}`;
     });
 });

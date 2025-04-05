@@ -1,9 +1,7 @@
-extends ../layout
 
-block content
   .form-container
     h1 Nouveau signalement
-    form#new-report-form(method="post", action="/signalements")
+    form#new-report-form(method="post", action="/signalements" enctype="multipart/form-data"))
       .form-group
         label(for="titre") Titre :
         input#titre(type="text", name="titre", placeholder="Titre du signalement", required)
@@ -12,7 +10,7 @@ block content
         textarea#description(name="description", placeholder="Décris le problème ici...")
       .form-group
         label(for="photo") URL de la photo :
-        input#photo(type="url", name="photo", placeholder="https://exemple.com/image.jpg")
+        input#photo(type="file", name="photo", placeholder="https://exemple.com/image.jpg")
       .form-group
         label(for="categorie") Catégorie :
         input#categorie(type="text", name="categorie", placeholder="Ex: Voirie, Déchets...")
