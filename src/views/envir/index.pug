@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 Environmental Data
+
+  #map(style="height: 600px; margin: 30px 0;")
+  script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
+  link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css")
+  script.
+    const data = !{JSON.stringify(data)};
+    const map = L.map('map').setView([40.75, -73.98], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+
+    data.forEach((d) => {
+      const [lng, lat] = d.location.coordinates;
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup(`<strong>${d.type}</strong><br>Value: ${d.value}`);
+    });
