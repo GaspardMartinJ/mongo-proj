@@ -20,6 +20,8 @@ Follow these steps to set up the project:
 3. Create a `.env` file in the root directory and configure the required environment variables:
     ```
     MONGO_URI=your_mongodb_connection_string
+    SUPABASE_URL=your_supabase_url
+    SUPABASE_KEY=your_supabase_key
     ```
 
 ## Running the Application
